@@ -16,5 +16,5 @@ find . -type f \( \( -iname \*.html -or -iname \*.js -or -iname \*.css \) -not \
     path="${dir}/${newname}"
 
     echo ${path}
-    minify ${fname} > ${path}
+    minify ${fname} | sponge ${path}
 done
