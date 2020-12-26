@@ -1,7 +1,5 @@
 # Minify Action
-[![GitHub release](https://img.shields.io/github/release/anthonyftwang/minify-action.svg?color=orange)](https://gitHub.com/anthonyftwang/minify-action/releases/)
-[![MIT license](https://img.shields.io/github/license/anthonyftwang/minify-action.svg?color=blue)](https://github.com/anthonyftwang/minify-action/blob/master/LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![GitHub release](https://img.shields.io/github/release/anthonyftwang/minify-action.svg?color=orange)](https://gitHub.com/tyrepharm/minify-action/releases/)
 
 Github Action to minify js, css, and html files pushed to a branch, using the [Minify](https://github.com/coderaiser/minify) package.
 ### Usage
@@ -22,7 +20,7 @@ jobs:
           ref: ${{ github.ref }}
 
       - name: Minify Action
-        uses: tyrepharm/minify-action@v1
+        uses: tyrepharm/minify-action@v2
 
       # Auto-commit to repository
       - uses: stefanzweifel/git-auto-commit-action@v4
