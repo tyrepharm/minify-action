@@ -2,7 +2,6 @@
 
 npm i minify -g
 apt-get update
-apt-get -y install moreutils
 
 find . -type f \( \( -iname \*.html -or -iname \*.js -or -iname \*.css \) -not \( -iname \*.min.\* -or -iname \*.map.\* \) \) | while read fname; do
 
@@ -16,5 +15,5 @@ find . -type f \( \( -iname \*.html -or -iname \*.js -or -iname \*.css \) -not \
     path="${dir}/${newname}"
 
     echo ${path}
-    minify ${fname} | sponge ${path}
+    minify ${fname} > ${path}
 done
