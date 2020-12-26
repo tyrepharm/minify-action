@@ -4,7 +4,16 @@ npm i minify -g
 apt-get update
 apt-get -y install moreutils
 
-find . -type f \( -iname \*.html -o -iname \*.js -o -iname \*.css \) | while read fname
-    do
-    minify ${fname} | sponge ${fname}
-    done
+
+find . -type f \( \( -iname \*.html -or -iname \*.js -or -iname \*.css \) -not \( -iname \*.min.\* -or -iname \*.map.\* \) \) | while read fname; do
+
+    export suffix="min"
+
+    if [[ "$fname" =~ .*\.[^.]*$ ]]; then
+        ext=".${fname##*\.}"
+    else
+        ext=""
+    fi
+
+    minify ${fname} | sponge ${fname%.*}.$suffix$ext
+done
