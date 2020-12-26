@@ -6,13 +6,15 @@ apt-get -y install moreutils
 
 find . -type f \( \( -iname \*.html -or -iname \*.js -or -iname \*.css \) -not \( -iname \*.min.\* -or -iname \*.map.\* \) \) | while read fname; do
 
-    export suffix="min"
+    suffix=".min."
+    filename=$(basename -- "$fname")
+    dir=$(dirname $fname)
+    extension="${filename##*.}"
+    filename="${filename%.*}"
+    newname="${filename}${suffix}${extension}"
 
-    if ["$fname" =~ .*\.[^.]*$]; then
-        ext=".${fname##*\.}"
-    else
-        ext=""
-    fi
-    echo ${fname%.*}.$suffix$ext
-    minify ${fname} > ${fname%.*}.$suffix$ext
+    path="${dir}/${newname}"
+
+    echo ${path}
+    minify ${fname} > ${path}
 done
