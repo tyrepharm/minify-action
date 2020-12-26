@@ -8,7 +8,7 @@ find . -type f \( \( -iname \*.html -or -iname \*.js -or -iname \*.css \) -not \
 
     export suffix="min"
 
-    if [["$fname" =~ .*\.[^.]*$]]; then
+    if ["$fname" =~ .*\.[^.]*$]; then
         ext=".${fname##*\.}"
     else
         ext=""
